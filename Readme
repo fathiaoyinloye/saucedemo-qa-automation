@@ -6,53 +6,62 @@ Cypress E2E automation test suite for the SauceDemo application.
 
 This project contains automated tests covering key SauceDemo user journeys, including:
 
-* User authentication
-* Product interactions
-* Add and remove from cart
-* Cart validation
-* Checkout validation
-* Regression tests for identified application defects
+- User authentication
+- Product interactions
+- Add and remove from cart
+- Cart validation
+- Checkout validation
+- Regression tests for identified application defects
 
 The tests were selected based on manual exploration and test-case analysis of the application.
 
+## Prerequisites
+
+- Node.js v24.14.0 (or later)
+- npm v11.9.0 (or later)
+- Google Chrome
+
 ## Tech Stack
 
-* Cypress
-* JavaScript
-* Node.js
+- Cypress v16.0.0
+- JavaScript
+- Node.js
 
 ## Test Coverage
 
-### Authentication
+**Authentication**
+- Successful login
+- Invalid credentials
+- Locked-out user
+- Performance-glitch user
 
-* Successful login
-* Invalid credentials
-* Locked-out user
-* Performance-glitch user
+**Products & Cart**
+- Add product to cart
+- Remove product from cart
+- View product details
+- Add multiple products
+- Cart behaviour across users
 
-### Products & Cart
+**Checkout**
+- Required-field validation
+- Valid checkout flow
+- Empty-cart checkout validation
 
-* Add product to cart
-* Remove product from cart
-* View product details
-* Add multiple products
-* Cart behaviour across users
+## Regression / Defect Testing
 
-### Checkout
+Some tests intentionally assert the expected correct behaviour for defects identified during manual testing. These tests are expected to fail against the current application, because the application does not currently meet that expected behaviour. A failure in these specific tests is evidence of a real, documented defect — not a broken test:
 
-* Required-field validation
-* Valid checkout flow
-* Empty-cart checkout validation
+- Checkout completing with an empty cart
+- `problem_user` checkout fields not remaining independent
+- `problem_user` unable to add certain products to the cart
+- `problem_user` seeing the same product image across all items
+- Cart contents persisting across different user sessions
 
-### Regression / Defect Testing
-
-Some tests intentionally assert the expected correct behaviour for defects identified during manual testing. These tests may fail against the current application because the application does not currently meet the expected behaviour.
+Full defect details are documented in the accompanying Bug Report and Test Plan.
 
 ## Test Design Approach
 
-The automation focuses on realistic user journeys and repeatable, high-value scenarios rather than attempting to automate every manual test case.
-
-Reusable Cypress custom commands are used for repeated actions such as user login and common checkout/cart interactions.
+The automation focuses on realistic user journeys and repeatable, high-value scenarios rather than attempting to automate every manual test case. Reusable Cypress custom commands are used for repeated actions such as user login and common checkout/cart interactions.
 
 ## Running the Tests
 
@@ -76,22 +85,22 @@ npx cypress run
 
 ## Test Results
 
-A failing test does not necessarily indicate a problem with the test itself. For documented regression scenarios, a failure can indicate that the application is still exhibiting a previously identified defect.
-
-Test execution results and supporting evidence are included with the assessment submission.
+A failing test does not necessarily indicate a problem with the test itself. For documented regression scenarios, a failure indicates that the application is still exhibiting a previously identified defect. Test execution results and supporting evidence are included with the assessment submission.
 
 ## Project Structure
 
 ```text
 cypress/
 ├── e2e/
-│   └── saucedemo.cy.js
+│   └── login_and_cart.cy.js
 ├── fixtures/
-├── support/
-│   └── commands.js
-└── screenshots/
+└── support/
+    ├── commands.js
+    └── e2e.js
+cypress.config.js
+package.json
 ```
 
 ## Assessment Context
 
-This project was created as part of a Product Quality Assurance Engineer assessment. The automation complements the manual test cases, test plan, and defect reports prepared for the assessment.
+This project was created as part of a Product Quality Assurance Engineer III assessment. The automation complements the manual test cases, test plan, and defect reports prepared for the assessment.
