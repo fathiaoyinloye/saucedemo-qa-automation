@@ -1,0 +1,97 @@
+# SauceDemo QA Automation
+
+Cypress E2E automation test suite for the SauceDemo application.
+
+## Overview
+
+This project contains automated tests covering key SauceDemo user journeys, including:
+
+* User authentication
+* Product interactions
+* Add and remove from cart
+* Cart validation
+* Checkout validation
+* Regression tests for identified application defects
+
+The tests were selected based on manual exploration and test-case analysis of the application.
+
+## Tech Stack
+
+* Cypress
+* JavaScript
+* Node.js
+
+## Test Coverage
+
+### Authentication
+
+* Successful login
+* Invalid credentials
+* Locked-out user
+* Performance-glitch user
+
+### Products & Cart
+
+* Add product to cart
+* Remove product from cart
+* View product details
+* Add multiple products
+* Cart behaviour across users
+
+### Checkout
+
+* Required-field validation
+* Valid checkout flow
+* Empty-cart checkout validation
+
+### Regression / Defect Testing
+
+Some tests intentionally assert the expected correct behaviour for defects identified during manual testing. These tests may fail against the current application because the application does not currently meet the expected behaviour.
+
+## Test Design Approach
+
+The automation focuses on realistic user journeys and repeatable, high-value scenarios rather than attempting to automate every manual test case.
+
+Reusable Cypress custom commands are used for repeated actions such as user login and common checkout/cart interactions.
+
+## Running the Tests
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Open Cypress interactively:
+
+```bash
+npx cypress open
+```
+
+Run the test suite headlessly:
+
+```bash
+npx cypress run
+```
+
+## Test Results
+
+A failing test does not necessarily indicate a problem with the test itself. For documented regression scenarios, a failure can indicate that the application is still exhibiting a previously identified defect.
+
+Test execution results and supporting evidence are included with the assessment submission.
+
+## Project Structure
+
+```text
+cypress/
+├── e2e/
+│   └── saucedemo.cy.js
+├── fixtures/
+├── support/
+│   └── commands.js
+└── screenshots/
+```
+
+## Assessment Context
+
+This project was created as part of a Product Quality Assurance Engineer assessment. The automation complements the manual test cases, test plan, and defect reports prepared for the assessment.
